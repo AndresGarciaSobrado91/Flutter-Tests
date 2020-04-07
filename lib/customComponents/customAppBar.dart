@@ -52,8 +52,3 @@ class CustomAppBar extends AppBar {
           ),
         );
 }
-
-class CustomSizedBox extends SizedBox {
-  CustomSizedBox({Key key, double width, double height, Widget child})
-      : super(key: key, height: height, width: width, child: child);
-}

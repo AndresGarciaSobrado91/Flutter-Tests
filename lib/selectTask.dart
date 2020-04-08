@@ -3,6 +3,27 @@ import 'package:flutter/material.dart';
 import 'customComponents/customAppBar.dart';
 
 class SelectTask extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: CustomAppBar(
+        "Select a task",
+        true,
+        onLeadingPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+      body: PageContent(),
+    );
+  }
+}
+
+class PageContent extends StatefulWidget {
+  @override
+  _PageContentState createState() => _PageContentState();
+}
+
+class _PageContentState extends State<PageContent> {
   List<String> rows = new List<String>()
     ..add('Task one')
     ..add('Task two')
@@ -19,26 +40,17 @@ class SelectTask extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(
-        "Select a task",
-        true,
-        onLeadingPressed: () {
-          Navigator.pop(context);
-        },
-      ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.all(30.0),
-            child: Column(
-              children: <Widget>[
-                SizedBox(height: 20.0),
-                selectTaskCard(),
-                SizedBox(height: 15.0),
-                taskListCard(),
-              ],
-            ),
+    return SingleChildScrollView(
+      child: Center(
+        child: Padding(
+          padding: EdgeInsets.all(30.0),
+          child: Column(
+            children: <Widget>[
+              SizedBox(height: 20.0),
+              selectTaskCard(),
+              SizedBox(height: 15.0),
+              taskListCard(),
+            ],
           ),
         ),
       ),

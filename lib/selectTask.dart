@@ -7,6 +7,14 @@ class SelectTask extends StatelessWidget {
     ..add('Task one')
     ..add('Task two')
     ..add('Task three')
+    ..add('Task four')
+    ..add('Task one')
+    ..add('Task two')
+    ..add('Task three')
+    ..add('Task four')
+    ..add('Task one')
+    ..add('Task two')
+    ..add('Task three')
     ..add('Task four');
 
   @override
@@ -81,9 +89,14 @@ class SelectTask extends StatelessWidget {
           height: 350.0,
           child: ListView.builder(
             itemBuilder: (context, position) {
-              return Padding(
-                padding: EdgeInsets.symmetric(vertical: 5.0),
-                child: Text(rows[position]),
+              return GestureDetector(
+                onTap: () {
+                  print('selected is: ' + position.toString());
+                },
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.0),
+                  child: Text(rows[position]),
+                ),
               );
             },
             itemCount: rows.length,

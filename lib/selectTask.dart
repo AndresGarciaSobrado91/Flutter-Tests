@@ -19,16 +19,18 @@ class SelectTask extends StatelessWidget {
           Navigator.pop(context);
         },
       ),
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(30.0),
-          child: Column(
-            children: <Widget>[
-              SizedBox(height: 20.0),
-              selectTaskCard(),
-              SizedBox(height: 15.0),
-              taskListCard(),
-            ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.all(30.0),
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 20.0),
+                selectTaskCard(),
+                SizedBox(height: 15.0),
+                taskListCard(),
+              ],
+            ),
           ),
         ),
       ),

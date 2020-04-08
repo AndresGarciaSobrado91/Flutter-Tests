@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 import 'customComponents/customAppBar.dart';
 
 class SelectTask extends StatelessWidget {
+  List<String> rows = new List<String>()
+    ..add('Task one')
+    ..add('Task two')
+    ..add('Task three')
+    ..add('Task four');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +27,7 @@ class SelectTask extends StatelessWidget {
               SizedBox(height: 20.0),
               selectTaskCard(),
               SizedBox(height: 15.0),
-              /*taskListCard(),*/
+              taskListCard(),
             ],
           ),
         ),
@@ -68,11 +74,18 @@ class SelectTask extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.all(25.0),
-        child: ListView.builder(
-          itemBuilder: (context, position) {
-            return Text("Some task here...");
-          },
-          itemCount: 5,
+        child: Container(
+          width: double.infinity,
+          height: 350.0,
+          child: ListView.builder(
+            itemBuilder: (context, position) {
+              return Padding(
+                padding: EdgeInsets.symmetric(vertical: 5.0),
+                child: Text(rows[position]),
+              );
+            },
+            itemCount: rows.length,
+          ),
         ),
       ),
     );

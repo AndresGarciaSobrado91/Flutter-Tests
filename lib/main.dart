@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:guinartbudgetsexample/customComponents/customAppBar.dart';
+import 'package:guinartbudgetsexample/selectTask.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,9 +36,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _goToPrevPage() {}
+  void _goToPrevPage() => Navigator.pop(context);
 
-  void _goToTaskSelection() {}
+  Future navigateToSelectTaskPage(context) async {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => SelectTask()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +172,9 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 70.0,
               child: FlatButton(
                 padding: EdgeInsets.all(0.0),
-                onPressed: _goToTaskSelection,
+                onPressed: () {
+                  navigateToSelectTaskPage(context);
+                },
                 child: Icon(
                   Icons.arrow_forward_ios,
                   color: Colors.blue.shade900,

@@ -55,51 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(
                 height: 20.0,
               ),
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(25.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(
-                        width: double.infinity,
-                      ),
-                      Text(
-                        'Customer Name',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.0,
-                      ),
-                      Text(
-                        'Project Name',
-                        style: TextStyle(
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Divider(
-                        color: Colors.grey.shade300,
-                        thickness: 1.5,
-                      ),
-                      Text(
-                        '497 Evergreen Rd. Roseville',
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.grey.shade500,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              mainCard(),
               SizedBox(
                 height: 15.0,
               ),
@@ -127,44 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(
                 height: 15.0,
               ),
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 25.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        'Select a task',
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      Container(
-                        width: 70.0,
-                        child: FlatButton(
-                          onPressed: _goToTaskSelection,
-                          child: IconButton(
-                            icon: Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.blue.shade900,
-                            ),
-                          ),
-                        ),
-                      )
-                      /*Container(
-                        width: 25.0,
-                        child: IconButton(
-                            icon: Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.blue.shade900,
-                            ),
-                            onPressed: null),
-                      ),*/
-                    ],
-                  ),
-                ),
-              ),
+              selectTaskCard(),
               SizedBox(
                 height: 20.0,
               ),
@@ -178,6 +97,94 @@ class _MyHomePageState extends State<MyHomePage> {
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget mainCard() {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+      child: Padding(
+        padding: EdgeInsets.all(25.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(
+              width: double.infinity,
+            ),
+            Text(
+              'Customer Name',
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Colors.grey,
+              ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            Text(
+              'Project Name',
+              style: TextStyle(
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Divider(
+              color: Colors.grey.shade300,
+              thickness: 1.5,
+            ),
+            Text(
+              '497 Evergreen Rd. Roseville',
+              style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.grey.shade500,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget selectTaskCard() {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+      child: Padding(
+        padding: EdgeInsets.only(left: 25.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(
+              'Select a task',
+              style: TextStyle(color: Colors.grey),
+            ),
+            Container(
+              width: 70.0,
+              child: FlatButton(
+                padding: EdgeInsets.all(0.0),
+                onPressed: _goToTaskSelection,
+                child: Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.blue.shade900,
+                ),
+              ),
+            )
+            /*Container(
+                        width: 25.0,
+                        child: IconButton(
+                            icon: Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.blue.shade900,
+                            ),
+                            onPressed: null),
+                      ),*/
+          ],
         ),
       ),
     );

@@ -37,12 +37,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _goToPrevPage() {}
 
+  void _goToTaskSelection() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: widget.title,
-        isBackButton: true,
+        widget.title,
+        true,
         onLeadingPressed: _goToPrevPage,
       ),
       body: Center(
@@ -130,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   borderRadius: BorderRadius.circular(5.0),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25.0),
+                  padding: EdgeInsets.only(left: 25.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -139,7 +141,18 @@ class _MyHomePageState extends State<MyHomePage> {
                         style: TextStyle(color: Colors.grey),
                       ),
                       Container(
-                        padding: const EdgeInsets.all(0.0),
+                        width: 70.0,
+                        child: FlatButton(
+                          onPressed: _goToTaskSelection,
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.blue.shade900,
+                            ),
+                          ),
+                        ),
+                      )
+                      /*Container(
                         width: 25.0,
                         child: IconButton(
                             icon: Icon(
@@ -147,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               color: Colors.blue.shade900,
                             ),
                             onPressed: null),
-                      ),
+                      ),*/
                     ],
                   ),
                 ),

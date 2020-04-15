@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:guinartbudgetsexample/Repo/mainRepo.dart';
 import 'package:guinartbudgetsexample/customComponents/customAppBar.dart';
 import 'package:guinartbudgetsexample/selectTask.dart';
 
@@ -28,14 +29,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   void _goToPrevPage() => Navigator.pop(context);
 
   Future navigateToSelectTaskPage(context) async {
@@ -91,11 +84,16 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(
                 height: 20.0,
               ),
-              Center(
-                child: Text(
-                  'There are no tasks in this project',
-                  style: TextStyle(
-                    color: Colors.grey,
+              TaskList(),
+              //No items in list
+              Visibility(
+                visible: false,
+                child: Center(
+                  child: Text(
+                    'There are no tasks in this project',
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
               )
@@ -181,16 +179,91 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             )
-            /*Container(
-                        width: 25.0,
-                        child: IconButton(
-                            icon: Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.blue.shade900,
-                            ),
-                            onPressed: null),
-                      ),*/
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class TaskList extends StatelessWidget {
+  final List<Movie> movieList = MainRepo().getUrls();
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Container(
+        height: 220.0,
+        child: ListView.builder(
+          itemBuilder: (context, position) {
+            return GestureDetector(
+              onTap: () {
+                print('selected is: ' + position.toString());
+              },
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 5.0),
+                child: Card(
+                  elevation: 2.0,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.grey, width: 0.2),
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(5.0),
+                        child: Image.network(
+                          movieList[position].image,
+                          width: 100.0,
+                          height: 100.0,
+                          fit: BoxFit.fitHeight,
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.all(20.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Text(
+                                    movieList[position].title,
+                                    style: TextStyle(
+                                        color: Color(0xFF194B9C),
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Icon(
+                                    Icons.delete,
+                                    color: Color(0xFF194B9C),
+                                  )
+                                ],
+                              ),
+                              Text('Description',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600)),
+                              SizedBox(
+                                height: 5.0,
+                              ),
+                              Text(
+                                'Lorep ipsum...',
+                                style: TextStyle(fontSize: 12.0),
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+          itemCount: movieList.length,
         ),
       ),
     );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomAppBar extends AppBar {
   CustomAppBar(String title, bool isBackButton,
-      {Key key, VoidCallback onLeadingPressed})
+      {Key key, Function /*VoidCallback or void Function()*/ onLeadingPressed})
       : super(
           leading: IconButton(
               icon: Icon(

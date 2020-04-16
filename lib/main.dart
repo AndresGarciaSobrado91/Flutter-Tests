@@ -191,82 +191,78 @@ class TaskList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        height: 220.0,
-        child: ListView.builder(
-          itemBuilder: (context, position) {
-            return GestureDetector(
-              onTap: () {
-                print('selected is: ' + position.toString());
-              },
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 5.0),
-                child: Card(
-                  elevation: 2.0,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.grey, width: 0.2),
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  child: Row(
-                    children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(5.0),
-                        child: Image.network(
-                          movieList[position].image,
-                          width: 120.0,
-                          height: 120.0,
-                          fit: BoxFit.fitHeight,
+    return Expanded(
+      child: ListView.builder(
+        itemBuilder: (context, position) {
+          return GestureDetector(
+            onTap: () {
+              print('selected is: ' + position.toString());
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 5.0),
+              child: Card(
+                elevation: 2.0,
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(color: Colors.grey, width: 0.2),
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                child: Row(
+                  children: <Widget>[
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(5.0),
+                      child: Image.network(
+                        movieList[position].image,
+                        width: 120.0,
+                        height: 120.0,
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  movieList[position].title,
+                                  style: TextStyle(
+                                      color: Color(0xFF194B9C),
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Icon(
+                                  Icons.delete,
+                                  color: Color(0xFF194B9C),
+                                )
+                              ],
+                            ),
+                            Text('Description',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600)),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Text(
+                              'Lorep ipsum... klajshdka aslkd nal lasd asd lads laskdnñ laksndl laskjdn la aksld mlas',
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                              style: TextStyle(fontSize: 12.0),
+                            )
+                          ],
                         ),
                       ),
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.all(20.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text(
-                                    movieList[position].title,
-                                    style: TextStyle(
-                                        color: Color(0xFF194B9C),
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Icon(
-                                    Icons.delete,
-                                    color: Color(0xFF194B9C),
-                                  )
-                                ],
-                              ),
-                              Text('Description',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w600)),
-                              SizedBox(
-                                height: 5.0,
-                              ),
-                              Text(
-                                'Lorep ipsum... klajshdka aslkd nal lasd asd lads laskdnñ laksndl laskjdn la aksld mlas',
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                style: TextStyle(fontSize: 12.0),
-                              )
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
+                    )
+                  ],
                 ),
               ),
-            );
-          },
-          itemCount: movieList.length,
-        ),
+            ),
+          );
+        },
+        itemCount: movieList.length,
       ),
     );
   }

@@ -214,8 +214,8 @@ class TaskList extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5.0),
                         child: Image.network(
                           movieList[position].image,
-                          width: 100.0,
-                          height: 100.0,
+                          width: 120.0,
+                          height: 120.0,
                           fit: BoxFit.fitHeight,
                         ),
                       ),
@@ -250,7 +250,9 @@ class TaskList extends StatelessWidget {
                                 height: 5.0,
                               ),
                               Text(
-                                'Lorep ipsum...',
+                                'Lorep ipsum... klajshdka aslkd nal lasd asd lads laskdnñ laksndl laskjdn la aksld mlas',
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
                                 style: TextStyle(fontSize: 12.0),
                               )
                             ],
